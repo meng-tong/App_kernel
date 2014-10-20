@@ -73,6 +73,7 @@ public class Buyer extends ActionBarActivity {
 		Runtime mRuntime = Runtime.getRuntime();
 		String gw = "";
 		String dev = "";
+		boolean p2pFlag = false;
 		
 		Process mProcess;
 		try {
@@ -95,6 +96,7 @@ public class Buyer extends ActionBarActivity {
 					int gwIndex1 = arpItems[i].indexOf("(");
 					int gwIndex2 = arpItems[i].indexOf(")");
 					gw = arpItems[i].substring(gwIndex1+1, gwIndex2);
+					p2pFlag = true;
 					break;
 				}
 			}
@@ -102,16 +104,20 @@ public class Buyer extends ActionBarActivity {
 			Log.e(buyerTAG, "EXECUTE ARP FAILED: " + e.toString());
 		}
 		
-		Toast.makeText(this, gw + " at " + dev, Toast.LENGTH_LONG).show();
-		
-		//su -c route add default gw GW dev DEV
-		String routeCmd = "su -c route add default gw " + gw + " dev " + dev;
-		try {
-			mProcess = mRuntime.exec(routeCmd);
-		} catch (IOException e) {
-			Log.e(buyerTAG, "ADD DEFAULT ROUTE FAILED: " + e.toString());
+		if(p2pFlag) {
+			Toast.makeText(this, gw + " at " + dev, Toast.LENGTH_LONG).show();
+			
+			//su -c route add default gw GW dev DEV
+			String routeCmd = "su -c route add default gw " + gw + " dev " + dev;
+			try {
+				mProcess = mRuntime.exec(routeCmd);
+			} catch (IOException e) {
+				Log.e(buyerTAG, "ADD DEFAULT ROUTE FAILED: " + e.toString());
+			}
+			
+			Toast.makeText(this, "Add default route Succeed", Toast.LENGTH_LONG).show();
+		} else {
+			Toast.makeText(this, "NO WIFI DIRECT CONNECTION!", Toast.LENGTH_LONG).show();
 		}
-		
-		Toast.makeText(this, "Add default route Succeed", Toast.LENGTH_SHORT).show();
 	}
 }
