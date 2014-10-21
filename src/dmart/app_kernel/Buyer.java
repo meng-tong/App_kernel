@@ -77,7 +77,7 @@ public class Buyer extends ActionBarActivity {
 		
 		Process mProcess;
 		try {
-			mProcess = mRuntime.exec("arp");
+			mProcess = mRuntime.exec("arp -n");
 			BufferedReader arpReader = new BufferedReader(new InputStreamReader(mProcess.getInputStream()));
 			StringBuffer arpResBuff = new StringBuffer();
 			char[] mBuff = new char[1024];
@@ -101,7 +101,7 @@ public class Buyer extends ActionBarActivity {
 				}
 			}
 		} catch (IOException e) {
-			Log.e(buyerTAG, "EXECUTE ARP FAILED: " + e.toString());
+			Log.e(buyerTAG, "BUYER EXECUTE ARP FAILED: " + e.toString());
 		}
 		
 		if(p2pFlag) {
@@ -109,10 +109,11 @@ public class Buyer extends ActionBarActivity {
 			
 			//su -c route add default gw GW dev DEV
 			String routeCmd = "su -c route add default gw " + gw + " dev " + dev;
+			textview.setText(gw);
 			try {
 				mProcess = mRuntime.exec(routeCmd);
 			} catch (IOException e) {
-				Log.e(buyerTAG, "ADD DEFAULT ROUTE FAILED: " + e.toString());
+				Log.e(buyerTAG, "BUYER ADD DEFAULT ROUTE FAILED: " + e.toString());
 			}
 			
 			Toast.makeText(this, "Add default route Succeed", Toast.LENGTH_LONG).show();

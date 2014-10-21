@@ -7,12 +7,12 @@
     <string name="button_name_main_buyer">Log in as Buyer</string>
     <string name="title_activity_seller">Seller</string>
     <string name="title_activity_buyer">Buyer</string>
-    <string name="text_view_buyer">Results of Commands</string>
+    <string name="text_view_buyer">IP of WiFi Direct Owner</string>
+    <string name="text_view_seller">IP of WiFi Direct Client</string>
     <string name="button_name_buyer_connect">Connect</string>
     <string name="button_name_seller_start">Start</string>
     <string name="connecting">vRouter is connecting</string>
     <string name="connected">vRouter is connected!</string>
     <string name="disconnected">vRouter is disconnected!</string>
-    <string name="hello_world">Hello world!</string>
 
 </resources>

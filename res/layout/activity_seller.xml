@@ -9,7 +9,7 @@
         android:layout_width="fill_parent"
         android:layout_height="50dip"
         android:layout_gravity="center"
-        android:text="@string/hello_world" >
+        android:text="@string/text_view_seller" >
     </TextView>
     
     <Button android:id="@+id/buttonid_seller_start"
