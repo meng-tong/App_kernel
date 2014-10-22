@@ -5,18 +5,17 @@
     android:orientation="vertical"
     tools:context=".Seller" >
 
-    <TextView android:id="@+id/text_ip_seller"
+    <ListView
+        android:id="@+id/list_ip_seller"
         android:layout_width="fill_parent"
-        android:layout_height="50dip"
-        android:layout_gravity="center"
-        android:text="@string/text_view_seller" >
-    </TextView>
-    
+        android:layout_height="300dp" >
+    </ListView>
+
     <Button android:id="@+id/buttonid_seller_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:text="@string/button_name_seller_start"
+        android:layout_gravity="center"
         android:onClick="onClick1" >
     </Button>
 
